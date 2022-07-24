@@ -7,19 +7,8 @@ export interface Resource8base {
   deletedAt: Date;
 }
 
-export interface User extends Resource8base {
-  email: string;
-  roles: { items: Role[] };
-}
-export interface Role {
-  name: string;
-}
-
 export interface Board extends Resource8base {
   title: string;
-
-  // Board order JSON encoded in DB and thus can be a string
-  // when decoded it's an array of Columns
   order: string | Column[];
 
   // relationships
@@ -30,7 +19,7 @@ export interface Board extends Resource8base {
 export interface Column {
   id: ID;
   title: string;
-  taskIds: ID[];
+  taskUids: ID[];
 }
 
 export interface Task extends Resource8base {
